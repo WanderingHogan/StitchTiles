@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html style="padding:0;margin:0;width: 100%; height: 100%;">
+
+<head>
+    <title>Leaflet Quick Start Guide Example</title>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/journal/bootstrap.min.css" rel="stylesheet" integrity="sha384-r/qnS4YZBLuBSKeVc+sM4eUYUiJMFhkHfx1nwlErHhTd+NgeJlN/NiiTd6jbKJzm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body style="padding:0;margin:0;width: 100%; height: 100%;">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header pull-left">
+                <a class="navbar-brand" href="#">create single map tiles</a>
+            </div>
+            <div class="navbar-header pull-right">
+                <button type="button" class="navbar-createImgButton" id="goButton">
+                    Make Single Image
+                </button>
+            </div>
+        </div>
+    </nav>
+    <div claass="container">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="form-group">
+                <form id="latLngInput">
+                <div class="input-group" id="latLngInput">
+                    <input type="text" class="form-control text-center" id="locationInput" placeholder="39.2859485,-76.6166236" >
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">go</button>
+                    </span>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div id="mapid" style="width: 100%; height: 800px;"></div>
+        </br>
+        <h3 class="text-center">right click and save this map</h3>
+        <canvas id="canvas" style="width: 100%; height: 800px;"></canvas>
+    </div>
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.13.1/lodash.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/fun.js"></script>
+</body>
+
+</html>
