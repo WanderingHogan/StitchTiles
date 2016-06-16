@@ -48,6 +48,34 @@ function makecanvas(width, height) {
     });
 }
 
+// get location from browser
+
+function geo_success(position) {
+    mymap.setView([position.coords.latitude, position.coords.longitude], 18);
+    setTextInputValue()
+}
+
+function geo_error() {
+console.log('Sorry, no position available. Setting location to Baltimore.');
+mymap.setView([39.289580, -76.615160], 18);
+}
+
+var geo_options = {
+enableHighAccuracy: true, 
+maximumAge        : 30000, 
+timeout           : 3500
+};
+
+var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+
+function setTextInputValue(){
+    // $('#locationInput').val(mymap.getCenter().lat + ', ' + mymap.getCenter().lng)
+    document.getElementById("locationInput").defaultValue = (mymap.getCenter().lat + ', ' + mymap.getCenter().lng);
+}
+
+mymap.on('moveend', function(e){
+    setTextInputValue()
+})
 // interaction with buttons
 
 $('#goButton').click(function (evt) {
@@ -85,3 +113,4 @@ $('#basemapToggle').click(function(evt){
     }
     evt.preventDefault();
 })
+
