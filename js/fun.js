@@ -1,6 +1,10 @@
 var mymap = L.map('mapid', { scrollWheelZoom: false }).setView([39.2859485, -76.6166236], 13);
+var access_token = 'pk.eyJ1Ijoic2Vuc29yY29sbGVjdGl2ZSIsImEiOiJjaXAzNzh5ZmowMGh3dTBtM25wOGtkdTJkIn0.29-vseOhNO5WBISkHnVgrQ';
 
-var cat = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw', {
+var streetmapURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + access_token;
+var satelliteUrl = 'https://api.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?access_token=' + access_token;
+
+var cat = L.tileLayer(streetmapURL, {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -51,7 +55,7 @@ $('#goButton').click(function (evt) {
     evt.preventDefault();
 })
 
-$("#latLngInput").submit(function (event, val) {
+$('#latLngInput').submit(function (event, val) {
     try {
         var newCoords = $("#locationInput").val().split(',');
 
@@ -64,3 +68,20 @@ $("#latLngInput").submit(function (event, val) {
     }
     event.preventDefault();
 });
+
+$('#reloadPage').click(function(){
+    location.reload();
+})
+
+$('#basemapToggle').click(function(evt){
+    console.log($('#basemapToggle').text())
+    if($('#basemapToggle').text() === ' Sat'){
+        cat.setUrl(satelliteUrl)
+        $('#basemapToggle').html('<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Street')
+    }
+    else {
+        cat.setUrl(streetmapURL)
+        $('#basemapToggle').html('<span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Sat')
+    }
+    evt.preventDefault();
+})
