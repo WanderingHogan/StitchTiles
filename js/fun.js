@@ -1,7 +1,8 @@
 var mymap = L.map('mapid', { scrollWheelZoom: false }).setView([39.2859485, -76.6166236], 13);
-var access_token = 'pk.eyJ1Ijoic2Vuc29yY29sbGVjdGl2ZSIsImEiOiJjaXAzNzh5ZmowMGh3dTBtM25wOGtkdTJkIn0.29-vseOhNO5WBISkHnVgrQ';
+var access_token = 'pk.eyJ1IjoibWR3aXNuaWV3c2tpIiwiYSI6IlV4ZUFPY0UifQ.tQYEPlkZHAEeaESGBl5Ahw';
 
-var streetmapURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + access_token;
+//var streetmapURL = 'https://api.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=' + access_token;
+var streetmapURL = 'https://api.mapbox.com/styles/v1/mdwisniewski/ciphb5l70000ybfmaqffi3z7p/tiles/256/{z}/{x}/{y}?access_token=' + access_token;
 var satelliteUrl = 'https://api.mapbox.com/v4/mapbox.streets-satellite/{z}/{x}/{y}.png?access_token=' + access_token;
 
 var cat = L.tileLayer(streetmapURL, {
@@ -50,23 +51,23 @@ function makecanvas(width, height) {
 
 // get location from browser
 
-function geo_success(position) {
-    mymap.setView([position.coords.latitude, position.coords.longitude], 18);
-    setTextInputValue()
-}
+// function geo_success(position) {
+//     mymap.setView([position.coords.latitude, position.coords.longitude], 18);
+//     setTextInputValue()
+// }
 
-function geo_error() {
-console.log('Sorry, no position available. Setting location to Baltimore.');
-mymap.setView([39.289580, -76.615160], 18);
-}
+// function geo_error() {
+// console.log('Sorry, no position available. Setting location to Baltimore.');
+// mymap.setView([39.289580, -76.615160], 18);
+// }
 
-var geo_options = {
-enableHighAccuracy: true, 
-maximumAge        : 30000, 
-timeout           : 3500
-};
+// var geo_options = {
+// enableHighAccuracy: true, 
+// maximumAge        : 30000, 
+// timeout           : 3500
+// };
 
-var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
+// var wpid = navigator.geolocation.watchPosition(geo_success, geo_error, geo_options);
 
 function setTextInputValue(){
     // $('#locationInput').val(mymap.getCenter().lat + ', ' + mymap.getCenter().lng)
